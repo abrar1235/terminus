@@ -1,0 +1,62 @@
+<mat-toolbar color="primary" class="toolbar">
+    <h3>{{greeting}}</h3>
+    <button mat-raised-button color="accent" (click)="logout()">Logout</button>
+</mat-toolbar>
+<div class="container-fluid">
+    <mat-accordion class="example-headers-align" multi>
+        <form [formGroup]="updateForm">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Personal data
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput formControlName="name">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" [readonly]="true">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Profession</mat-label>
+                    <input matInput formControlName="profession">
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" [disabled]="updateForm.untouched || updateForm.invalid || inProgress" (click)="update()">Update</button>
+            </mat-expansion-panel>
+        </form>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Search User
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Search</mat-label>
+                <input matInput [formControl]="searchForm">
+            </mat-form-field>
+            <mat-divider></mat-divider>
+            <div class="search-result">
+                <h3 *ngIf="users.length == 0">No Result</h3>
+                <div class="users" *ngFor="let user of users">
+                    <h3>Name: {{user.name}}, Profession: {{user.profession}}</h3>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Account
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button mat-raised-button color="warn" (click)="deleteAccount()">Delete Account</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

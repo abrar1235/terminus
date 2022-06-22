@@ -1,0 +1,17 @@
+.sign-up {
+    position: relative;
+    top: 10vh;
+    mat-form-field{
+        font-size: 18px;
+        width: 300px;
+    }
+}
+
+
+.action-button {
+    button {
+        width: 200px;
+        height: 50px;
+        margin: 5px 0;
+    }
+}

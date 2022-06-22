@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="toolbar">
+    <p>User Profile Sharing</p>
+</mat-toolbar>
+<div class="container-fluid text-center login">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Please Login to Continue</h2>
+        </div>
+    </div>
+    <form [formGroup]="loginForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-error>Required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="{{showPass? 'text':'password'}}" placeholder="Password"
+                            formControlName="password">
+                        <mat-icon matSuffix (click)="showPass = !showPass">{{showPass ? 'visibility':'visibility_off'}}
+                        </mat-icon>
+                        <mat-error>Required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="action-button">
+                    <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="login()">Login
+                        <mat-progress-spinner color="warn" mode="indeterminate" diameter="25" class="progress-spinner"
+                            *ngIf="inProgress">
+                        </mat-progress-spinner>
+                    </button><br>
+                    <button mat-raised-button color="accent" [routerLink]="['/sign-up']">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

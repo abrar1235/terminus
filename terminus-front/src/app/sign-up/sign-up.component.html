@@ -1,0 +1,69 @@
+<mat-toolbar color="primary" class="toolbar">
+    <p>User Profile Sharing</p>
+</mat-toolbar>
+<div class="container-fluid text-center sign-up">
+    <h2>Thans for Signing Up, Please Fill the Form</h2>
+    <form [formGroup]="signUpForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Name" formControlName="name">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-error>Required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        <mat-error>Required</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="{{showPass? 'text':'password'}}" placeholder="Password"
+                            formControlName="password">
+                        <mat-icon matSuffix (click)="showPass = !showPass">{{showPass ? 'visibility':'visibility_off'}}
+                        </mat-icon>
+                        <mat-error>{{passError}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <mat-form-field appearance="outline">
+                        <input matInput type="{{showCPass? 'text':'password'}}" placeholder="Confirm Password"
+                            formControlName="cPassword">
+                        <mat-icon matSuffix (click)="showCPass = !showCPass">{{showCPass ?
+                            'visibility':'visibility_off'}}
+                        </mat-icon>
+                        <mat-error>{{passError}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="action-button">
+                    <button mat-raised-button color="primary" [disabled]="signUpForm.invalid" (click)="signUp()">Sign Up
+                        <mat-progress-spinner color="warn" mode="indeterminate" diameter="25" class="progress-spinner"
+                            *ngIf="inProgress">
+                        </mat-progress-spinner>
+                    </button><br>
+                    <button mat-raised-button color="accent" [routerLink]="['/']">Login</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
